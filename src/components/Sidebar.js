@@ -12,6 +12,7 @@ function Sidebar() {
             </div>
             <div className="sidebar__bootm">
 
+
             </div>
         </div>
     )
