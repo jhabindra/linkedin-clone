@@ -2,17 +2,17 @@ import { Avatar } from "@material-ui/core";
 import React from "react";
 import "./Sidebar.css";
 
- function Sidebar() {
+function Sidebar() {
 
-    const recentItem =(topic)=>{
-      <p>{topic}</p>
-        // <div className="sidebar__recentItem">
-        //     <span className="sidebar__hash">#</span>
-        //     <p>{topic}</p>
-        // </div>
-    };
-   
-    
+  const recentItem = (topic) => {
+    return (
+      <div className="sidebar__recentItem">
+        <span className="sidebar__hash">#</span>
+        <p>{topic}</p>
+      </div>
+    );
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -29,21 +29,21 @@ import "./Sidebar.css";
           <p>Who viewd you</p>
           <p className="sidebar__statNumber">2,564</p>
         </div>
-        <div className="sidebar__stat" >
-        <p>Viewdon post</p>
-        <p className="sidebar__statNumber">2,448</p>
-        {recentItem("reactJs")}
+        <div className="sidebar__stat">
+          <p>Viewdon post</p>
+          <p className="sidebar__statNumber">2,448</p>
         </div>
       </div>
 
       <div className="sidebar__bottom">
         <p>Recent</p>
-    {recentItem()}
-        {recentItem('Programming')}
-        {recentItem('softwareengineering')}
-        {recentItem('design')}
-        {recentItem('developer')}
+        {recentItem("reactJs")}
+        {recentItem("Programming")}
+        {recentItem("softwareengineering")}
+        {recentItem("design")}
+        {recentItem("developer")}
       </div>
+      
     </div>
   );
 }

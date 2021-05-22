@@ -22,7 +22,7 @@ function Header() {
           <SearchIcon />
           <input type="text" />
         </div>
-      </div>
+      </div>                                                             
       <div className="header__right">
         <HeaderOptions Icon={HomeIcon} title="Home" />
         <HeaderOptions Icon={SupervisorAccountIcon} title="My Network" />
