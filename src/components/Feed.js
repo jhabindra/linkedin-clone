@@ -27,17 +27,18 @@ function Feed() {
       });
   }, []);
 
+  
   const sendPost = (e) => {
     e.preventDefault();
-    // db.collection("posts").add({
-    //   name: "jhabindra Rayamajhi",
-    //   description: "this is test",
-    //   message: input,
-    //   photoUrl: "",
-    //   timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-    // });
+    db.collection("posts").add({
+      name: "jhabindra Rayamajhi",
+      description: "this is test",
+      message: input,
+      photoUrl: "",
+      timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
 
-    // setInput("");
+    setInput("");
   };
 
   return (
