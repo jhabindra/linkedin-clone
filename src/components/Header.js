@@ -9,8 +9,18 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import HeaderOptions from "./HeaderOptions";
 import logo from "../images/LI-In-Bug.png"
+import { useDispatch, useSelector } from "react-redux";
+import { login,logout, selectUser } from "../features/userSlice";
+import { auth } from "./Firebase";
+import { Avatar } from "@material-ui/core";
 
 function Header() {
+  const dispatch= useDispatch();
+  const user=useSelector(selectUser);
+  const logoutApp=()=>{
+    dispatch(logout());
+    auth.signOut()
+  }
   return (
     <div className="header">
       <div className="header__left">
@@ -29,7 +39,7 @@ function Header() {
         <HeaderOptions Icon={WorkIcon} title="Job" />
         <HeaderOptions Icon={MessageIcon} title="Messeging" />
         <HeaderOptions Icon={NotificationsIcon} title="Notifications" />
-        <HeaderOptions Avatar={AccountCircleIcon} title="Me" />
+        <HeaderOptions avatar={true} title="Me" onClick={logoutApp}/> 
       </div>
     </div>
   );

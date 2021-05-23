@@ -9,11 +9,14 @@ import ImportOptions from "./ImportOptions";
 import Post from "./Post";
 import { db } from "./Firebase";
 import firebase from "firebase";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
+import FlipMove from "react-flip-move";
 
 function Feed() {
   const [input, setInput] = useState("");
   const [posts, setPosts] = useState([]);
-
+ const user=useSelector(selectUser);
   useEffect(() => {
     db.collection("posts")
       .orderBy("timeStamp", "desc")
@@ -31,10 +34,10 @@ function Feed() {
   const sendPost = (e) => {
     e.preventDefault();
     db.collection("posts").add({
-      name: "jhabindra Rayamajhi",
-      description: "this is test",
+      name: user.displayName,
+      description: user.email,
       message: input,
-      photoUrl: "",
+      photoUrl:user.photoUrl|| "",
       timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
@@ -74,6 +77,7 @@ function Feed() {
       </div>
 
       {/* posts */}
+      <FlipMove>
       {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
         <Post
           key={id}
@@ -83,6 +87,7 @@ function Feed() {
           photoUrl={photoUrl}
         />
       ))}
+      </FlipMove>
 
       {/* <Post
         name="jhabindra Rayamajhi"
